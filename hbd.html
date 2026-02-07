@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎉</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, sans-serif;
+}
+
+body{
+background: linear-gradient(120deg, #56f7ff, #e866b2);
+text-align:center;
+overflow-x:hidden;
+}
+
+/* Heading */
+h1{
+margin-top:30px;
+margin-bottom: 30px;
+font-size:3rem;
+font-family: Georgia, 'Times New Roman', Times, serif;
+color:rgb(77, 3, 3);
+animation: glow 4s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px rgb(164, 14, 224);}
+to{ text-shadow:0 0 25px yellow;}
+}
+
+/* Message */
+.message{
+padding:20px;
+color:white;
+font-size:1.2rem;
+max-width:600px;
+margin:auto;
+margin-bottom: 0px;
+}
+
+/* Image Gallery */
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+padding:40px;
+}
+
+.gallery img{
+width:250px;
+height:250px;
+object-fit:cover;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition: transform 0.4s;
+}
+
+.gallery img:hover{
+transform: scale(1.1);
+}
+
+.balloon-container{
+position:fixed;
+bottom:0;
+width:100%;
+height:100%;
+pointer-events:none;
+animation: rise linear infinite, sway 3s ease-in-out infinite alternate;
+}
+
+.balloon{
+position:absolute;
+bottom:-150px;
+width:50px;
+height:70px;
+border-radius:50%;
+animation: rise linear infinite;
+}
+
+/* Balloon Style */
+.balloon{
+position:absolute;
+bottom:-150px;
+width:50px;
+height:70px;
+border-radius:50%;
+animation: rise linear infinite;
+}
+
+/* Balloon String */
+.balloon::after{
+content:"";
+position:absolute;
+width:2px;
+height:40px;
+background:white;
+top:70px;
+left:50%;
+transform:translateX(-50%);
+}
+
+@keyframes sway {
+from { transform: translateX(-20px); }
+to { transform: translateX(20px); }
+}
+
+
+/* Confetti */
+.confetti{
+position:fixed;
+width:10px;
+height:15px;
+background:yellow;
+top:-10px;
+animation: fall 5s linear infinite;
+}
+
+@keyframes fall{
+to{
+transform: translateY(100vh) rotate(360deg);
+}
+}
+
+/* Responsive */
+@media(max-width:600px){
+h1{font-size:2rem;}
+.gallery img{width:150px;height:150px;}
+}
+
+button{
+padding:10px;
+border:none;
+background:#ff0062;
+color:white;
+border-radius:20px;
+cursor:pointer;
+margin-bottom:20px;
+margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e171f0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Song -->
+<audio id="song" loop>
+  <source src="Shatta-Wale-Birthday.mp3" type="audio/mp3">
+</audio>
+
+<button onclick="playSong()">🎵 Play Birthday Song</button>
+
+<h1>Happy Birthday Mummy ❤️🎂</h1>
+
+<!-- Images -->
+<div class="gallery">
+<img src="mummy1.jpeg" alt="Birthday person">
+<img src="mummy2.jpeg" alt="Birthday person">
+<img src="mummy3.jpeg" alt="Birthday person">
+</div>
+
+<div class="message">
+Wishing you a day filled with happiness, laughter, and unforgettable memories.
+May all your dreams come true and may this year bring you endless joy.
+You deserve all the love and happiness in the world! ❤️
+  <p> <br>-AKYAA💜 </p>
+</div>
+
+<div class="cake-video-container">
+
+    <video id="cakeVideo" autoplay loop muted>
+        <source src="" type="video/mp4">
+    </video>
+
+</div>
+
+<div class="balloon-container">
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+</div>
+
+
+<script>
+function playSong(){
+document.getElementById("song").play();
+}
+
+/* Confetti Generator With Different Colors */
+
+const colors = ["red", "blue", "yellow", "green", "purple", "orange", "pink", "cyan"];
+
+for(let i=0; i<60; i++){
+let confetti = document.createElement("div");
+confetti.classList.add("confetti");
+
+confetti.style.left = Math.random() * 100 + "vw";
+confetti.style.animationDelay = Math.random() * 5 + "s";
+
+/* Random Color */
+confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+document.body.appendChild(confetti);
+}
+</script>
+
+
+
+</body>
+</html>
